@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dayandur Hümbətov — Rəsmi TikTok Jeton Satışı</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800;900&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --gold: #FFD700;
+    --gold-light: #FFE966;
+    --blue-deep: #020B2D;
+    --blue-mid: #0A1F6B;
+    --blue-bright: #1565FF;
+    --blue-glow: #2196F3;
+    --cyan: #00D4FF;
+    --white: #FFFFFF;
+    --text-muted: #A8C4E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--blue-deep);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(21,101,255,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0,212,255,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 30% at 10% 90%, rgba(255,215,0,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 48px 16px 32px;
+    position: relative;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(21,101,255,0.25);
+    border: 1px solid rgba(0,212,255,0.4);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .badge::before { content: '✦'; font-size: 10px; }
+
+  .hero-title {
+    font-family: 'Exo 2', sans-serif;
+    font-size: clamp(32px, 9vw, 52px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .hero-title .line-gold {
+    color: var(--gold);
+    text-shadow: 0 0 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,215,0,0.2);
+    display: block;
+  }
+
+  .hero-title .line-white { display: block; }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 380px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+
+  .hero-sub strong { color: var(--white); }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--gold) 0%, #FFA500 100%);
+    color: #020B2D;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(255,215,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,215,0,0.55), 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    margin: 8px 0;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .trust-item span { font-size: 16px; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 32px 0 16px;
+  }
+
+  .section-label::before, .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,212,255,0.4), transparent);
+  }
+
+  .section-label span {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+
+  /* ── PRICE GRID ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .price-card {
+    background: rgba(10,31,107,0.5);
+    border: 1px solid rgba(21,101,255,0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-card:hover {
+    border-color: rgba(0,212,255,0.6);
+    background: rgba(10,31,107,0.8);
+  }
+
+  a.price-card {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a.price-card:active {
+    transform: scale(0.97);
+    border-color: rgba(255,215,0,0.7);
+  }
+
+  .price-card .coin { font-size: 20px; flex-shrink: 0; }
+
+  .price-card .amount {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-muted);
+    flex: 1;
+    margin: 0 8px;
+  }
+
+  .price-card .amount strong {
+    display: block;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .price-card .price-tag {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ── BIG TIER ── */
+  .big-tier-header {
+    background: linear-gradient(135deg, rgba(33,150,243,0.2), rgba(0,212,255,0.1));
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .big-tier-header h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--cyan);
+    letter-spacing: 1px;
+  }
+
+  .big-tier-header p { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  .big-price-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .big-price-row {
+    background: rgba(5,15,60,0.7);
+    border: 1px solid rgba(21,101,255,0.25);
+    border-radius: 12px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.2s;
+  }
+
+  .big-price-row:hover { border-color: rgba(255,215,0,0.4); }
+
+  a.big-price-row {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a.big-price-row:active {
+    transform: scale(0.97);
+  }
+
+  .big-price-row .jeton-amount {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .big-price-row .jeton-amount::before { content: '🪙'; font-size: 18px; }
+
+  .big-price-row .big-price {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+
+  .big-price-row.featured {
+    background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.05));
+    border-color: rgba(255,215,0,0.4);
+  }
+
+  /* ── CONTACT ── */
+  .contact-card {
+    background: linear-gradient(135deg, rgba(10,31,107,0.7), rgba(2,11,45,0.9));
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin: 32px 0;
+  }
+
+  .contact-card h3 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+
+  .contact-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+  }
+
+  .contact-row .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-row .icon.blue { background: rgba(21,101,255,0.25); }
+  .contact-row .icon.green { background: rgba(0,200,100,0.2); }
+  .contact-row .icon.orange { background: rgba(255,165,0,0.2); }
+
+  .contact-row .info { flex: 1; }
+  .contact-row .info .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row .info .value { font-size: 14px; font-weight: 600; color: var(--white); margin-top: 2px; word-break: break-all; }
+
+  /* ── CTA BOTTOM ── */
+  .cta-bottom {
+    text-align: center;
+    padding: 8px 0 48px;
+  }
+
+  .cta-bottom .cta-btn { font-size: 17px; padding: 18px 40px; }
+
+  .cta-note {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .cta-note::before { content: '🔒'; font-size: 14px; }
+
+  /* ── VOEN ── */
+  .voen-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255,215,0,0.08);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .voen-badge strong { color: var(--gold); font-weight: 700; }
+
+  @media (max-width: 400px) {
+    .price-grid { grid-template-columns: 1fr; }
+    .trust-bar { gap: 12px; }
+  }
+
+  /* coin sparkle animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .hero-coins {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: #0A1F6B;
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    animation: popIn 0.2s ease;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+  .modal-box .m-title {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    color: #A8C4E0;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .modal-box .m-package {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: #FFD700;
+    margin-bottom: 20px;
+  }
+  .modal-box .m-number {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+  }
+  .modal-box .m-number:hover, .modal-box .m-number:active {
+    background: rgba(0,200,100,0.2);
+    color: #FFFFFF;
+  }
+  .modal-box .m-hint {
+    font-size: 12px;
+    color: #A8C4E0;
+    margin-bottom: 16px;
+  }
+  .modal-box .m-call-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #00C864, #00A050);
+    color: #fff;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(0,200,100,0.4);
+    margin-bottom: 12px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .modal-box .m-call-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 3px 12px rgba(0,200,100,0.3);
+  }
+  .modal-box .m-close {
+    display: inline-block;
+    padding: 10px 28px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-coins">🪙</span>
+    <div class="badge">Rəsmi TikTok Jeton Satışı</div>
+    <h1 class="hero-title">
+      <span class="line-gold">Sərfəli Jeton</span>
+      <span class="line-white">Əldə Et</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>Dayandur Hümbətov</strong> — TikTok Jeton satışında <strong>%100 etibarlı</strong> və rəsmi xidmət. Ən aşağı qiymətlər, ani çatdırılma.
+    </p>
+    <a class="cta-btn" href="javascript:void(0)" onclick="showModal('Jeton sifarişi vermək istəyirəm')" target="_blank">💬 WhatsApp-da Yaz</a>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span>✅</span> Rəsmi Satıcı</div>
+    <div class="trust-item"><span>⚡</span> Ani Çatdırılma</div>
+    <div class="trust-item"><span>💎</span> Ən Sərfəli Qiymət</div>
+    <div class="trust-item"><span>🛡️</span> Təhlükəsiz Ödəniş</div>
+  </div>
+
+  <!-- STANDARD PRICES -->
+  <div class="section-label"><span>Standart Tariflər</span></div>
+
+  <div class="price-grid">
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('150 Jeton sifarişi vermək istəyirəm (5 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>150 Jeton</strong></div>
+      <span class="price-tag">5 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('200 Jeton sifarişi vermək istəyirəm (6 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>200 Jeton</strong></div>
+      <span class="price-tag">6 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('250 Jeton sifarişi vermək istəyirəm (7 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>250 Jeton</strong></div>
+      <span class="price-tag">7 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('300 Jeton sifarişi vermək istəyirəm (8 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>300 Jeton</strong></div>
+      <span class="price-tag">8 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('400 Jeton sifarişi vermək istəyirəm (9 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>400 Jeton</strong></div>
+      <span class="price-tag">9 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('500 Jeton sifarişi vermək istəyirəm (10 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>500 Jeton</strong></div>
+      <span class="price-tag">10 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('600 Jeton sifarişi vermək istəyirəm (13 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>600 Jeton</strong></div>
+      <span class="price-tag">13 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('700 Jeton sifarişi vermək istəyirəm (15 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>700 Jeton</strong></div>
+      <span class="price-tag">15 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('800 Jeton sifarişi vermək istəyirəm (18 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>800 Jeton</strong></div>
+      <span class="price-tag">18 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('900 Jeton sifarişi vermək istəyirəm (19 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>900 Jeton</strong></div>
+      <span class="price-tag">19 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('1000 Jeton sifarişi vermək istəyirəm (20 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>1.000 Jeton</strong></div>
+      <span class="price-tag">20 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('1500 Jeton sifarişi vermək istəyirəm (30 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>1.500 Jeton</strong></div>
+      <span class="price-tag">30 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('2000 Jeton sifarişi vermək istəyirəm (40 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>2.000 Jeton</strong></div>
+      <span class="price-tag">40 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('2500 Jeton sifarişi vermək istəyirəm (50 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>2.500 Jeton</strong></div>
+      <span class="price-tag">50 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('5000 Jeton sifarişi vermək istəyirəm (98 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>5.000 Jeton</strong></div>
+      <span class="price-tag">98 AZN</span>
+    </a>
+    <a class="price-card" href="javascript:void(0)" onclick="showModal('8000 Jeton sifarişi vermək istəyirəm (157 AZN)')" target="_blank">
+      <span class="coin">🪙</span>
+      <div class="amount"><strong>8.000 Jeton</strong></div>
+      <span class="price-tag">157 AZN</span>
+    </a>
+  </div>
+
+  <!-- BIG TIERS -->
+  <div class="section-label"><span>💎 Böyük Tariflər 💎</span></div>
+
+  <div class="big-tier-header">
+    <h2>Topdan Alış — Maksimum Qənaət</h2>
+    <p>Nə qədər çox alsan, bir o qədər sərfəli</p>
+  </div>
+
+  <div class="big-price-list">
+    <a class="big-price-row" href="javascript:void(0)" onclick="showModal('10000 Jeton sifarişi vermək istəyirəm (196 AZN)')" target="_blank">
+      <span class="jeton-amount">10.000 Jeton</span>
+      <span class="big-price">196 AZN</span>
+    </a>
+    <a class="big-price-row" href="javascript:void(0)" onclick="showModal('15000 Jeton sifarişi vermək istəyirəm (295 AZN)')" target="_blank">
+      <span class="jeton-amount">15.000 Jeton</span>
+      <span class="big-price">295 AZN</span>
+    </a>
+    <a class="big-price-row" href="javascript:void(0)" onclick="showModal('17500 Jeton sifarişi vermək istəyirəm (345 AZN)')" target="_blank">
+      <span class="jeton-amount">17.500 Jeton</span>
+      <span class="big-price">345 AZN</span>
+    </a>
+    <a class="big-price-row" href="javascript:void(0)" onclick="showModal('20000 Jeton sifarişi vermək istəyirəm (395 AZN)')" target="_blank">
+      <span class="jeton-amount">20.000 Jeton</span>
+      <span class="big-price">395 AZN</span>
+    </a>
+    <a class="big-price-row" href="javascript:void(0)" onclick="showModal('30000 Jeton sifarişi vermək istəyirəm (590 AZN)')" target="_blank">
+      <span class="jeton-amount">30.000 Jeton</span>
+      <span class="big-price">590 AZN</span>
+    </a>
+    <a class="big-price-row featured" href="javascript:void(0)" onclick="showModal('50000 Jeton sifarişi vermək istəyirəm (990 AZN)')" target="_blank">
+      <span class="jeton-amount">50.000 Jeton</span>
+      <span class="big-price">990 AZN</span>
+    </a>
+    <a class="big-price-row featured" href="javascript:void(0)" onclick="showModal('100000 Jeton sifarişi vermək istəyirəm (1980 AZN)')" target="_blank">
+      <span class="jeton-amount">100.000 Jeton</span>
+      <span class="big-price">1.980 AZN</span>
+    </a>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-card">
+    <h3>📋 Rəsmi Məlumatlar və Əlaqə</h3>
+    <div class="contact-list">
+      <div class="contact-row">
+        <div class="icon blue">🏛️</div>
+        <div class="info">
+          <div class="label">Vergi Ödəyicisi (VÖEN)</div>
+          <div class="value">5502039582</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="icon blue">📍</div>
+        <div class="info">
+          <div class="label">Ünvan</div>
+          <div class="value">Bakı şəhəri, Tərlan Şirinov küçəsi</div>
+        </div>
+      </div>
+      <a href="mailto:dayandurhumbetov4@gmail.com" style="text-decoration:none;">
+        <div class="contact-row">
+          <div class="icon orange">✉️</div>
+          <div class="info">
+            <div class="label">E-Poçt</div>
+            <div class="value">dayandurhumbetov4@gmail.com</div>
+          </div>
+        </div>
+      </a>
+      <a href="tel:+994705249866" style="text-decoration:none;">
+        <div class="contact-row">
+          <div class="icon green">📞</div>
+          <div class="info">
+            <div class="label">Telefon</div>
+            <div class="value">070 524 98 66</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="voen-badge">
+      🛡️ Rəsmi qeydiyyatı olan &nbsp;<strong>etibarlı satıcı</strong>
+    </div>
+  </div>
+
+  <!-- CTA BOTTOM -->
+  <div class="cta-bottom">
+    <a class="cta-btn" href="javascript:void(0)" onclick="showModal('sifariş vermək istəyirəm')">
+      💬 İndi Sifariş Ver
+    </a>
+    <div class="cta-note"><a href="tel:+994705249866" style="color:inherit;text-decoration:none;">📞 070 524 98 66 — WhatsApp-da əlaqə saxlayın</a></div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="waModal" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="m-title">Sifariş üçün əlaqə</div>
+    <div class="m-package" id="modalPackage"></div>
+    <a href="tel:+994705249866" class="m-number">070 524 98 66</a>
+    <div class="m-hint">Aşağıdakı düyməyə basaraq birbaşa zəng edin</div>
+    <a href="tel:+994705249866" class="m-call-btn">📞 Zəng Et</a>
+    <div class="m-close" onclick="closeModal()">Bağla</div>
+  </div>
+</div>
+<script>
+function showModal(pkg) {
+  document.getElementById('modalPackage').textContent = pkg;
+  document.getElementById('waModal').classList.add('active');
+}
+function closeModal() {
+  document.getElementById('waModal').classList.remove('active');
+}
+</script>
+</body>
+</html>
